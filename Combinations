@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<vector<int>> combine(int n, int k) {
+        vector<int>partialpath;
+        vector<vector<int>>allpath;
+        traverse(n,k,partialpath,allpath);
+        return allpath;
+    }
+private:
+   void traverse(int n,int k,vector<int>&partialpath,vector<vector<int>>&allpath){
+    if(k==0)
+    allpath.push_back(partialpath);
+   
+   else if(n==0)
+    return ;
+     
+     else{
+        partialpath.push_back(n);
+        traverse(n-1,k-1,partialpath,allpath);
+        partialpath.pop_back();
+        traverse(n-1,k,partialpath,allpath);
+     }
+   }
+};
